@@ -13,7 +13,7 @@ export const ActionButton = ({ className, children, ...props }: ActionButtonProp
       }
       {...props}
     >
-      click{children}
+      {children}
     </button>
   )
 }
