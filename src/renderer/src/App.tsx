@@ -1,4 +1,13 @@
-import { ActionButtonRow, Content, DraggableToBar, NotePreviewList, RootLayout, Sidebar } from '@/components'
+import {
+  ActionButtonRow,
+  Content,
+  DraggableToBar,
+  FloatingNoteTitle,
+  MakdownEditor,
+  NotePreviewList,
+  RootLayout,
+  Sidebar
+} from '@/components'
 
 const App = () => {
   return (
@@ -7,9 +16,12 @@ const App = () => {
       <RootLayout>
         <Sidebar className="p-2">
           <ActionButtonRow className="flex justify-between mt-1" />
-          <NotePreviewList  className ="mt-3 space-y-1"/>
+          <NotePreviewList className="mt-3 space-y-1" />
         </Sidebar>
-        <Content className="border-l bg-zinc-900/50 border-l-white/20">Content</Content>
+        <Content className="border-l bg-zinc-900/50 border-l-white/20">
+        <FloatingNoteTitle className="pt-2" />
+          <MakdownEditor />
+        </Content>
       </RootLayout>
     </>
   )

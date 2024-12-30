@@ -14,10 +14,22 @@
     @apply font-mono antialiased text-white;
     @apply overflow-hidden;
   }
-  header{
+  header {
     -webkit-app-region: drag;
   }
-  button{
+  button {
     -webkit-ap-region: no-drag;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#555];
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
   }
 }
