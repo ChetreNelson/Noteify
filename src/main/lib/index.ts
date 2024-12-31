@@ -1,4 +1,4 @@
-import { apDirectoryName, fileEncoding } from '@shared/constant'
+import { apDirectoryName, fileEncoding, welcomeNoteFileName } from '@shared/constant'
 import { NoteInfo } from '@shared/models'
 import {
   CreateNote,
@@ -9,8 +9,10 @@ import {
 } from '@shared/types'
 import { dialog } from 'electron'
 import { ensureDir, readdir, readFile, remove, stat, writeFile } from 'fs-extra'
+import { isEmpty } from 'lodash'
 import { homedir } from 'os'
 import path from 'path'
+import welcomeNoteFile from '../../../resources/welcomeNote.md?asset'
 
 export const getRootDir = () => {
   return path.join(homedir(), apDirectoryName)
@@ -25,6 +27,13 @@ export const getNotes: GetNotes = async () => {
   })
 
   const notes = notesFileNames.filter((fileName) => fileName.endsWith('.md'))
+
+  if (isEmpty(notes)) {
+    const content = await readFile(welcomeNoteFile, { encoding: fileEncoding })
+    const welcomeNotePath = path.join(rootDir, 'Welcome.md') // Use a proper file name
+    await writeFile(welcomeNotePath, content, { encoding: fileEncoding })
+    notes.push(welcomeNoteFileName)
+  }
 
   return Promise.all(notes.map(getNoteInfoFromFileName))
 }
