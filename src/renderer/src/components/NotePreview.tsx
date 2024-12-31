@@ -13,7 +13,7 @@ export const NotePreview = ({
   ...props
 }: NotePreviewProps) => {
   const date = formatDateFromMs(Number(lastEditTime))
-  return (  
+  return (
     <div
       className={cn(
         'cursor-pointer px-2.5 py-3 rounded-md transition-colors duration-75',

@@ -1,13 +1,14 @@
 import clsx, { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-declare global {
-  interface Window {
-    context?: {
-      locale: string
-    }
-  }
-}
+// declare global {
+//   interface Window {
+//     context?: {s
+//       locale: string
+//       getNotes: GetNotes
+//     }
+//   }
+// }
 
 const dateFormatter = new Intl.DateTimeFormat(window?.context?.locale, {
   dateStyle: 'short',
