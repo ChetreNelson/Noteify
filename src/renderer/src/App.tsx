@@ -19,7 +19,7 @@ const App = () => {
     <>
       <DraggableToBar />
       <RootLayout>
-        <Sidebar className="p-2">
+        <Sidebar className="p-2 bg-zinc-500/30">
           <ActionButtonRow className="flex justify-between mt-10" />
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
