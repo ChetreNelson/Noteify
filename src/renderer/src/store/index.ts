@@ -6,7 +6,7 @@ const loadNotes = async () => {
   const notes = await window?.context?.getNotes()
 
   //sort them by mos t recently edidted
-  return notes.sort((a, b) => b.lastEditTime - a.lastEditTime)
+  return notes?.sort((a, b) => b.lastEditTime - a.lastEditTime)
 }
 
 const notesAtomAsync = atom<NoteInfo[] | Promise<NoteInfo[]>>(loadNotes())
@@ -15,18 +15,30 @@ export const notesAtom = unwrap(notesAtomAsync, (prev) => prev)
 
 export const selectedNoteIndexAtom = atom<number | null>(null)
 
-export const selectedNoteAtom = atom((get) => {
+const selectedNoteAtomAsync = atom(async (get) => {
   const notes = get(notesAtom)
   const selectedNoteIndex = get(selectedNoteIndexAtom)
 
   if (selectedNoteIndex === null || !notes) return null
 
   const selectedNote = notes[selectedNoteIndex]
+
+  const noteContent = await window?.context?.readNote?.(selectedNote.title)
   return {
     ...selectedNote,
-    content: `Hello from Note${selectedNoteIndex}`
+    content: noteContent
   }
 })
+
+export const selectedNoteAtom = unwrap(
+  selectedNoteAtomAsync,
+  (prev) =>
+    prev ?? {
+      title: '',
+      lastEditTime: Date.now(),
+      content: ''
+    }
+)
 
 export const createEmptyNoteAtom = atom(null, (get, set) => {
   const notes = get(notesAtom)

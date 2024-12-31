@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge'
 
 export const FloatingNoteTitle = ({ className, ...props }: ComponentProps<'div'>) => {
   const selectedNote = useAtomValue(selectedNoteAtom)
+  console.log('🚀 ~ FloatingNoteTitle ~ selectedNote:', selectedNote)
 
   if (!selectedNote) return null
   return (
