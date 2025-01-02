@@ -1,6 +1,6 @@
-## Welcome to Notefiy
+## Welcome to Noteify
 
-Hey! I’m **Nelson Katwal**, the creator of Notefiy. This app is all about keeping your notes simple and distraction-free.
+Hey! I’m **Nelson Katwal**, the creator of Noteify. This app is all about keeping your notes simple and distraction-free.
 
 > "Notes turn ideas into actions."
 

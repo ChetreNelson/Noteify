@@ -15,7 +15,7 @@ function createWindow(): void {
     // ...(process.platform === 'linux' ? { icon: icon2 } : { icon: icon2 }),
     icon: icon2,
     center: true,
-    title: 'Notefiy',
+    title: 'Noteify',
     vibrancy: 'under-window',
     visualEffectState: 'active',
     // titleBarStyle: 'hidden',
