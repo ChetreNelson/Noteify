@@ -2,7 +2,7 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { CreateNote, DeleteNote, GetNotes, ReadNote, WriteNote } from '@shared/types'
 import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { join } from 'path'
-import icon from '../../resources/icon.png?asset'
+import icon2 from '../../resources/image.png?asset'
 import { createNote, deleteNote, getNotes, readNote, writeNote } from './lib'
 
 function createWindow(): void {
@@ -12,7 +12,8 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    // ...(process.platform === 'linux' ? { icon: icon2 } : { icon: icon2 }),
+    icon: icon2,
     center: true,
     title: 'Notefiy',
     vibrancy: 'under-window',
